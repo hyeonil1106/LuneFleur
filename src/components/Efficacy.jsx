@@ -211,7 +211,6 @@ const Efficacy = () => {
     dragStartX.current = e.clientX || (e.touches && e.touches[0].clientX) || 0;
     setActiveDragClass('is-dragging');
     setIsHovered(true); // Pause auto-rotation immediately
-    setIsFlipped(false); // Reset card flip on drag start
   };
 
   const handleDragMove = (e) => {

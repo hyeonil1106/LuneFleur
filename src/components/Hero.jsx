@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import '../styles/sections/Hero.css';
 import { ArrowRight } from 'lucide-react';
 import SplashCursor from './SplashCursor';
+import heroBgVideo from '../assets/videos/mp4.mp4';
 
 const Hero = () => {
   const heroRef = useRef(null);
@@ -54,7 +55,7 @@ const Hero = () => {
       <video 
         ref={videoRef}
         className="hero-video-bg" 
-        src="/assets/mp4.mp4" 
+        src={heroBgVideo} 
         autoPlay 
         loop 
         muted 

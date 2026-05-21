@@ -1,19 +1,33 @@
 import React, { useEffect, useRef, useState } from 'react';
 import '../styles/sections/InteractiveIntro.css';
 
+// 이미지 imports
+import flower01 from '../assets/images/flowers/flower_01.png';
+import flower02 from '../assets/images/flowers/flower_02.png';
+import flower03 from '../assets/images/flowers/flower_03.png';
+import flower04 from '../assets/images/flowers/flower_04.png';
+import flower05 from '../assets/images/flowers/flower_05.png';
+import flower06 from '../assets/images/flowers/flower_06.png';
+import flower07 from '../assets/images/flowers/flower_07.png';
+import flower08 from '../assets/images/flowers/flower_08.png';
+import flower09 from '../assets/images/flowers/flower_09.png';
+import flower10 from '../assets/images/flowers/flower_10.png';
+import flower11 from '../assets/images/flowers/flower_11.png';
+import flower12 from '../assets/images/flowers/flower_12.png';
+
 const birthFlowers = {
-  1: { nameKo: '수선화', nameEn: 'Daffodil', image: '/assets/images/flowers/flower_01.png', meaning: '자기사랑, 자존심, 고결' },
-  2: { nameKo: '제비꽃', nameEn: 'Violet', image: '/assets/images/flowers/flower_02.png', meaning: '겸손, 진실한 사랑' },
-  3: { nameKo: '데이지', nameEn: 'Daisy', image: '/assets/images/flowers/flower_03.png', meaning: '명랑, 순수한 마음' },
-  4: { nameKo: '스위트피', nameEn: 'Sweet Pea', image: '/assets/images/flowers/flower_04.png', meaning: '우아한 추억, 사랑의 기쁨' },
-  5: { nameKo: '은방울꽃', nameEn: 'Lily of the Valley', image: '/assets/images/flowers/flower_05.png', meaning: '틀림없이 행복해집니다, 순결' },
-  6: { nameKo: '장미', nameEn: 'Rose', image: '/assets/images/flowers/flower_06.png', meaning: '사랑, 아름다움, 열정' },
-  7: { nameKo: '델피늄', nameEn: 'Delphinium', image: '/assets/images/flowers/flower_07.png', meaning: '당신을 행복하게 해줄게요, 청명' },
-  8: { nameKo: '글라디올러스', nameEn: 'Gladiolus', image: '/assets/images/flowers/flower_08.png', meaning: '견고한 성격, 무장, 사랑의 고백' },
-  9: { nameKo: '아스터', nameEn: 'Aster', image: '/assets/images/flowers/flower_09.png', meaning: '추억, 믿음, 사랑의 결실' },
-  10: { nameKo: '금잔화', nameEn: 'Marigold', image: '/assets/images/flowers/flower_10.png', meaning: '우정, 예언, 이별의 슬픔' },
-  11: { nameKo: '국화', nameEn: 'Chrysanthemum', image: '/assets/images/flowers/flower_11.png', meaning: '청조, 평화, 지조' },
-  12: { nameKo: '포인세티아', nameEn: 'Poinsettia', image: '/assets/images/flowers/flower_12.png', meaning: '축복, 뜨거운 마음' },
+  1: { nameKo: '수선화', nameEn: 'Daffodil', image: flower01, meaning: '자기사랑, 자존심, 고결' },
+  2: { nameKo: '제비꽃', nameEn: 'Violet', image: flower02, meaning: '겸손, 진실한 사랑' },
+  3: { nameKo: '데이지', nameEn: 'Daisy', image: flower03, meaning: '명랑, 순수한 마음' },
+  4: { nameKo: '스위트피', nameEn: 'Sweet Pea', image: flower04, meaning: '우아한 추억, 사랑의 기쁨' },
+  5: { nameKo: '은방울꽃', nameEn: 'Lily of the Valley', image: flower05, meaning: '틀림없이 행복해집니다, 순결' },
+  6: { nameKo: '장미', nameEn: 'Rose', image: flower06, meaning: '사랑, 아름다움, 열정' },
+  7: { nameKo: '델피늄', nameEn: 'Delphinium', image: flower07, meaning: '당신을 행복하게 해줄게요, 청명' },
+  8: { nameKo: '글라디올러스', nameEn: 'Gladiolus', image: flower08, meaning: '견고한 성격, 무장, 사랑의 고백' },
+  9: { nameKo: '아스터', nameEn: 'Aster', image: flower09, meaning: '추억, 믿음, 사랑의 결실' },
+  10: { nameKo: '금잔화', nameEn: 'Marigold', image: flower10, meaning: '우정, 예언, 이별의 슬픔' },
+  11: { nameKo: '국화', nameEn: 'Chrysanthemum', image: flower11, meaning: '청조, 평화, 지조' },
+  12: { nameKo: '포인세티아', nameEn: 'Poinsettia', image: flower12, meaning: '축복, 뜨거운 마음' },
 };
 
 const InteractiveIntro = () => {

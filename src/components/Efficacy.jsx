@@ -1,9 +1,24 @@
 import React, { useEffect, useRef, useState } from 'react';
 import '../styles/sections/Efficacy.css';
 
+// 이미지 imports
+import bottleShot from '../assets/images/bottle_shot.png';
+import flower01 from '../assets/images/flowers/flower_01.png';
+import flower02 from '../assets/images/flowers/flower_02.png';
+import flower03 from '../assets/images/flowers/flower_03.png';
+import flower04 from '../assets/images/flowers/flower_04.png';
+import flower05 from '../assets/images/flowers/flower_05.png';
+import flower06 from '../assets/images/flowers/flower_06.png';
+import flower07 from '../assets/images/flowers/flower_07.png';
+import flower08 from '../assets/images/flowers/flower_08.png';
+import flower09 from '../assets/images/flowers/flower_09.png';
+import flower10 from '../assets/images/flowers/flower_10.png';
+import flower11 from '../assets/images/flowers/flower_11.png';
+import flower12 from '../assets/images/flowers/flower_12.png';
+
 const showcaseItems = [
   { 
-    id: 'f1', month: 1, nameKo: '수선화', nameEn: 'Daffodil', src: '/assets/images/flowers/flower_01.png', alt: '1월 수선화 탄생화', colorFilter: 'hue-rotate(-10deg) saturate(0.8) brightness(1.02)',
+    id: 'f1', month: 1, nameKo: '수선화', nameEn: 'Daffodil', src: flower01, alt: '1월 수선화 탄생화', colorFilter: 'hue-rotate(-10deg) saturate(0.8) brightness(1.02)',
     fragranceNotes: [
       { name: 'Top (그린 시트러스)', percentage: 70, color: '#dcd6b6' },
       { name: 'Middle (수선화, 은방울꽃)', percentage: 95, color: '#c29b74' },
@@ -12,7 +27,7 @@ const showcaseItems = [
     ]
   },
   { 
-    id: 'f2', month: 2, nameKo: '제비꽃', nameEn: 'Violet', src: '/assets/images/flowers/flower_02.png', alt: '2월 제비꽃 탄생화', colorFilter: 'hue-rotate(110deg) saturate(0.6) brightness(1.05)',
+    id: 'f2', month: 2, nameKo: '제비꽃', nameEn: 'Violet', src: flower02, alt: '2월 제비꽃 탄생화', colorFilter: 'hue-rotate(110deg) saturate(0.6) brightness(1.05)',
     fragranceNotes: [
       { name: 'Top (베르가못, 페어)', percentage: 65, color: '#8984a8' },
       { name: 'Middle (제비꽃, 아이리스)', percentage: 90, color: '#c29b74' },
@@ -21,7 +36,7 @@ const showcaseItems = [
     ]
   },
   { 
-    id: 'f3', month: 3, nameKo: '데이지', nameEn: 'Daisy', src: '/assets/images/flowers/flower_03.png', alt: '3월 데이지 탄생화', colorFilter: 'hue-rotate(-20deg) saturate(0.7) brightness(1.03)',
+    id: 'f3', month: 3, nameKo: '데이지', nameEn: 'Daisy', src: flower03, alt: '3월 데이지 탄생화', colorFilter: 'hue-rotate(-20deg) saturate(0.7) brightness(1.03)',
     fragranceNotes: [
       { name: 'Top (피치, 라즈베리)', percentage: 80, color: '#dfd7b9' },
       { name: 'Middle (데이지, 쟈스민)', percentage: 85, color: '#778a6d' },
@@ -30,7 +45,7 @@ const showcaseItems = [
     ]
   },
   { 
-    id: 'f4', month: 4, nameKo: '스위트피', nameEn: 'Sweet Pea', src: '/assets/images/flowers/flower_04.png', alt: '4월 스위트피 탄생화', colorFilter: 'hue-rotate(160deg) saturate(0.7) brightness(1.02)',
+    id: 'f4', month: 4, nameKo: '스위트피', nameEn: 'Sweet Pea', src: flower04, alt: '4월 스위트피 탄생화', colorFilter: 'hue-rotate(160deg) saturate(0.7) brightness(1.02)',
     fragranceNotes: [
       { name: 'Top (그레이프프루츠)', percentage: 75, color: '#d8a8b5' },
       { name: 'Middle (스위트피, 로즈)', percentage: 95, color: '#c29b74' },
@@ -39,7 +54,7 @@ const showcaseItems = [
     ]
   },
   { 
-    id: 'f5', month: 5, nameKo: '은방울꽃', nameEn: 'Lily of the Valley', src: '/assets/images/flowers/flower_05.png', alt: '5월 은방울꽃 탄생화', colorFilter: 'hue-rotate(40deg) saturate(0.5) brightness(1.08)',
+    id: 'f5', month: 5, nameKo: '은방울꽃', nameEn: 'Lily of the Valley', src: flower05, alt: '5월 은방울꽃 탄생화', colorFilter: 'hue-rotate(40deg) saturate(0.5) brightness(1.08)',
     fragranceNotes: [
       { name: 'Top (그린 애플, 레몬)', percentage: 70, color: '#a7b5a1' },
       { name: 'Middle (은방울꽃, 릴리)', percentage: 90, color: '#c29b74' },
@@ -48,7 +63,7 @@ const showcaseItems = [
     ]
   },
   { 
-    id: 'f6', month: 6, nameKo: '장미', nameEn: 'Rose', src: '/assets/images/flowers/flower_06.png', alt: '6월 장미 탄생화', colorFilter: 'hue-rotate(180deg) saturate(1.1) brightness(0.98)',
+    id: 'f6', month: 6, nameKo: '장미', nameEn: 'Rose', src: flower06, alt: '6월 장미 탄생화', colorFilter: 'hue-rotate(180deg) saturate(1.1) brightness(0.98)',
     fragranceNotes: [
       { name: 'Top (핑크 페퍼, 카시스)', percentage: 60, color: '#c87a8b' },
       { name: 'Middle (다마스크 로즈)', percentage: 100, color: '#b7596c' },
@@ -57,7 +72,7 @@ const showcaseItems = [
     ]
   },
   { 
-    id: 'f7', month: 7, nameKo: '델피늄', nameEn: 'Delphinium', src: '/assets/images/flowers/flower_07.png', alt: '7월 델피늄 탄생화', colorFilter: 'hue-rotate(85deg) saturate(0.8) brightness(1.02)',
+    id: 'f7', month: 7, nameKo: '델피늄', nameEn: 'Delphinium', src: flower07, alt: '7월 델피늄 탄생화', colorFilter: 'hue-rotate(85deg) saturate(0.8) brightness(1.02)',
     fragranceNotes: [
       { name: 'Top (오션 아쿠아, 민트)', percentage: 85, color: '#7998b3' },
       { name: 'Middle (델피늄, 워터릴리)', percentage: 90, color: '#c29b74' },
@@ -66,7 +81,7 @@ const showcaseItems = [
     ]
   },
   { 
-    id: 'f8', month: 8, nameKo: '글라디올러스', nameEn: 'Gladiolus', src: '/assets/images/flowers/flower_08.png', alt: '8월 글라디올러스 탄생화', colorFilter: 'hue-rotate(200deg) saturate(0.9) brightness(1.0)',
+    id: 'f8', month: 8, nameKo: '글라디올러스', nameEn: 'Gladiolus', src: flower08, alt: '8월 글라디올러스 탄생화', colorFilter: 'hue-rotate(200deg) saturate(0.9) brightness(1.0)',
     fragranceNotes: [
       { name: 'Top (베르가못, 비터 오렌지)', percentage: 75, color: '#bf8773' },
       { name: 'Middle (글라디올러스, 네롤리)', percentage: 85, color: '#c29b74' },
@@ -75,7 +90,7 @@ const showcaseItems = [
     ]
   },
   { 
-    id: 'f9', month: 9, nameKo: '아스터', nameEn: 'Aster', src: '/assets/images/flowers/flower_09.png', alt: '9월 아스터 탄생화', colorFilter: 'hue-rotate(100deg) saturate(0.7) brightness(1.02)',
+    id: 'f9', month: 9, nameKo: '아스터', nameEn: 'Aster', src: flower09, alt: '9월 아스터 탄생화', colorFilter: 'hue-rotate(100deg) saturate(0.7) brightness(1.02)',
     fragranceNotes: [
       { name: 'Top (플럼, 라벤더)', percentage: 65, color: '#897ba8' },
       { name: 'Middle (아스터, 헬리오트로프)', percentage: 90, color: '#c29b74' },
@@ -84,7 +99,7 @@ const showcaseItems = [
     ]
   },
   { 
-    id: 'f10', month: 10, nameKo: '금잔화', nameEn: 'Marigold', src: '/assets/images/flowers/flower_10.png', alt: '10월 금잔화 탄생화', colorFilter: 'hue-rotate(-15deg) saturate(1.2) brightness(0.98)',
+    id: 'f10', month: 10, nameKo: '금잔화', nameEn: 'Marigold', src: flower10, alt: '10월 금잔화 탄생화', colorFilter: 'hue-rotate(-15deg) saturate(1.2) brightness(0.98)',
     fragranceNotes: [
       { name: 'Top (만다린, 메리골드 잎)', percentage: 80, color: '#cba677' },
       { name: 'Middle (금잔화, 오렌지 블로썸)', percentage: 95, color: '#b78b54' },
@@ -93,7 +108,7 @@ const showcaseItems = [
     ]
   },
   { 
-    id: 'f11', month: 11, nameKo: '국화', nameEn: 'Chrysanthemum', src: '/assets/images/flowers/flower_11.png', alt: '11월 국화 탄생화', colorFilter: 'hue-rotate(-5deg) saturate(0.9) brightness(0.95)',
+    id: 'f11', month: 11, nameKo: '국화', nameEn: 'Chrysanthemum', src: flower11, alt: '11월 국화 탄생화', colorFilter: 'hue-rotate(-5deg) saturate(0.9) brightness(0.95)',
     fragranceNotes: [
       { name: 'Top (진저, 유자)', percentage: 60, color: '#bfa573' },
       { name: 'Middle (국화, 클라리세이지)', percentage: 90, color: '#c29b74' },
@@ -102,7 +117,7 @@ const showcaseItems = [
     ]
   },
   { 
-    id: 'f12', month: 12, nameKo: '포인세티아', nameEn: 'Poinsettia', src: '/assets/images/flowers/flower_12.png', alt: '12월 포인세티아 탄생화', colorFilter: 'hue-rotate(190deg) saturate(1.2) brightness(0.95)',
+    id: 'f12', month: 12, nameKo: '포인세티아', nameEn: 'Poinsettia', src: flower12, alt: '12월 포인세티아 탄생화', colorFilter: 'hue-rotate(190deg) saturate(1.2) brightness(0.95)',
     fragranceNotes: [
       { name: 'Top (크랜베리, 시나몬)', percentage: 80, color: '#b56262' },
       { name: 'Middle (포인세티아, 레드 로즈)', percentage: 85, color: '#9e4747' },
@@ -310,7 +325,7 @@ const Efficacy = () => {
                     {/* Card Front */}
                     <div className="visual-card-front">
                       <img 
-                        src="/assets/images/bottle_shot.png" 
+                        src={bottleShot} 
                         alt="LuneFleur Perfume Bottle" 
                         className="visual-bottle-img"
                         style={{ filter: item.colorFilter }}

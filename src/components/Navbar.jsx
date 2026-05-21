@@ -40,7 +40,7 @@ const Navbar = () => {
           <button onClick={() => scrollToSection('.hero')} className="menu-link">스토리</button>
           <button onClick={() => scrollToSection('.interactive-intro')} className="menu-link">탄생화</button>
           <button onClick={() => scrollToSection('.showcase')} className="menu-link">쇼케이스</button>
-          <button onClick={() => scrollToSection('.efficacy')} className="menu-link">효능</button>
+          <button onClick={() => scrollToSection('.efficacy')} className="menu-link">성분</button>
           <button onClick={() => scrollToSection('.social-proof')} className="menu-link">리뷰</button>
           <button onClick={() => scrollToSection('.epilogue-cta')} className="menu-link">선물하기</button>
         </nav>
@@ -48,8 +48,8 @@ const Navbar = () => {
         {/* Right Actions */}
         <div className="navbar-actions">
           {/* Mobile Menu Toggle */}
-          <button 
-            className="mobile-toggle" 
+          <button
+            className="mobile-toggle"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
@@ -67,8 +67,8 @@ const Navbar = () => {
           <button onClick={() => scrollToSection('.efficacy')} className="mobile-menu-link">효능</button>
           <button onClick={() => scrollToSection('.social-proof')} className="mobile-menu-link">리뷰</button>
           <button onClick={() => scrollToSection('.epilogue-cta')} className="mobile-menu-link">선물하기</button>
-          <button 
-            onClick={() => scrollToSection('.interactive-intro')} 
+          <button
+            onClick={() => scrollToSection('.interactive-intro')}
             className="mobile-cta-btn"
           >
             나만의 향수 만들기

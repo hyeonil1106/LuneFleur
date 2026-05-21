@@ -11,7 +11,7 @@
 }
 
 .social-title {
-  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-size: clamp(1.5rem, 3.5vw, 3rem);
   color: var(--color-text-main);
   margin-bottom: 1rem;
 }
@@ -120,7 +120,7 @@
   border: 1px solid rgba(255, 255, 255, 0.5);
   padding: 0.4rem 0.8rem;
   border-radius: 50px;
-  font-size: 0.85rem;
+  font-size: clamp(0.75rem, 1.2vw, 0.85rem);
   font-weight: 700;
   color: var(--color-accent);
   letter-spacing: 0.05em;
@@ -146,19 +146,19 @@
 
 .stars {
   color: var(--color-accent);
-  font-size: 1.25rem;
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
   letter-spacing: 2px;
 }
 
 .review-text {
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
   line-height: 1.6;
   color: var(--color-text-main);
   font-style: italic;
 }
 
 .review-author {
-  font-size: 0.9rem;
+  font-size: clamp(0.8rem, 1.2vw, 0.9rem);
   font-weight: 600;
   color: var(--color-text-main);
   margin-top: auto;

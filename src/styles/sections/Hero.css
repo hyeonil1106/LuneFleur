@@ -31,7 +31,7 @@
 .hero-title {
   color: var(--color-white); /* 다크 배경 대비 또렷하게 돋보이는 흰색 서체 */
   font-family: 'Noto Serif KR', serif;
-  font-size: clamp(2rem, 4.5vw, 3.8rem);
+  font-size: clamp(1.6rem, 4.5vw, 3.8rem);
   line-height: 1.5;
   font-weight: 600;
   letter-spacing: -0.01em;
@@ -47,7 +47,7 @@
   color: var(--color-text-main); /* 다크 숲 올리브 텍스트 */
   padding: 16px 36px;
   border-radius: 40px; /* 라운드형 버튼 */
-  font-size: 1.05rem;
+  font-size: clamp(0.9rem, 2vw, 1.05rem);
   font-weight: 500;
   letter-spacing: -0.01em;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -200,6 +200,5 @@
   
   .hero-cta {
     padding: 14px 28px;
-    font-size: 1rem;
   }
 }

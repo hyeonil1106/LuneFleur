@@ -61,7 +61,7 @@
   background-color: var(--color-text-main);
   color: var(--color-white);
   padding: 1.5rem 3.5rem;
-  font-size: 1.25rem;
+  font-size: clamp(1rem, 2vw, 1.25rem);
   font-weight: 500;
   border-radius: 4px;
   border: none;
@@ -113,7 +113,7 @@
   
   .final-cta-btn {
     padding: 1.2rem 2.5rem;
-    font-size: 1.1rem;
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
     width: 100%;
   }
   

@@ -35,7 +35,7 @@
 /* Logo */
 .navbar-logo {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.85rem; /* 크기 확대 */
+  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
   font-weight: 600;
   letter-spacing: 0.18em; /* 자간 조정 */
   color: var(--color-text-main);
@@ -59,7 +59,7 @@
   background: none;
   border: none;
   font-family: var(--font-sans); /* 사이트 폰트와 통일감 있는 고딕 서체 */
-  font-size: 1.15rem; /* 크기 확대 */
+  font-size: clamp(1rem, 1.5vw, 1.15rem); /* 크기 확대 */
   font-weight: 500;
   color: var(--color-text-main);
   cursor: pointer;
@@ -120,7 +120,7 @@
   color: var(--color-white);
   border: 1px solid var(--color-text-main);
   border-radius: 30px;
-  font-size: 0.875rem;
+  font-size: clamp(0.75rem, 1vw, 0.875rem);
   font-weight: 500;
   letter-spacing: -0.01em;
   cursor: pointer;
@@ -177,7 +177,7 @@
   background: none;
   border: none;
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.75rem;
+  font-size: clamp(1.4rem, 2.5vw, 1.75rem);
   font-weight: 500;
   color: var(--color-text-main);
   cursor: pointer;
@@ -198,7 +198,7 @@
   color: var(--color-white);
   border: none;
   border-radius: 30px;
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;

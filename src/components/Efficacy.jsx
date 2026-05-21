@@ -324,18 +324,20 @@ const Efficacy = () => {
                   <div className="visual-card-inner">
                     {/* Card Front */}
                     <div className="visual-card-front">
-                      <img 
-                        src={bottleShot} 
-                        alt="LuneFleur Perfume Bottle" 
-                        className="visual-bottle-img"
-                        style={{ filter: item.colorFilter }}
-                      />
-                      <img 
-                        src={item.src} 
-                        alt={item.alt} 
-                        className="visual-watercolor-deco"
-                      />
-                      <div className="visual-month-badge">{item.month}월</div>
+                      <div className="visual-card-front-content">
+                        <img 
+                          src={bottleShot} 
+                          alt="LuneFleur Perfume Bottle" 
+                          className="visual-bottle-img"
+                          style={{ filter: item.colorFilter }}
+                        />
+                        <img 
+                          src={item.src} 
+                          alt={item.alt} 
+                          className="visual-watercolor-deco"
+                        />
+                        <div className="visual-month-badge">{item.month}월</div>
+                      </div>
                     </div>
 
                     {/* Card Back (Ingredients Chart) - Rendered only for the active card to optimize performance */}

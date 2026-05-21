@@ -191,3 +191,15 @@
 .hero.is-loaded .hero-video-overlay {
   opacity: 1;
 }
+
+/* Responsive configurations */
+@media (max-width: 768px) {
+  .hero-title {
+    margin-bottom: 2rem;
+  }
+  
+  .hero-cta {
+    padding: 14px 28px;
+    font-size: 1rem;
+  }
+}

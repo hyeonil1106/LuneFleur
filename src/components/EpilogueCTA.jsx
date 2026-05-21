@@ -1,9 +1,11 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import '../styles/sections/EpilogueCTA.css';
+import CheckoutModal from './CheckoutModal';
 import giftBoxImg from '../assets/images/gift_box_new.jpg';
 
 const EpilogueCTA = () => {
   const sectionRef = useRef(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -44,10 +46,11 @@ const EpilogueCTA = () => {
           탄생화의 문장을 선물하세요.
         </h2>
 
-        <button className="final-cta-btn">
+        <button className="final-cta-btn" onClick={() => setIsModalOpen(true)}>
           선물하기
         </button>
       </div>
+      <CheckoutModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 };

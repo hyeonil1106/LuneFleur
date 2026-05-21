@@ -130,17 +130,29 @@
 
 /* Card Front side (Translucent Ice block concept) */
 .showcase-card-front {
-  background-color: var(--color-white);
+  background-color: transparent;
   display: block;
+}
+
+.showcase-card-front-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-white);
   border: 1px solid rgba(255, 255, 255, 0.8);
   box-shadow: 
     inset 0 0 25px rgba(255, 255, 255, 0.65), 
     inset 0 0 0 1px rgba(255, 255, 255, 0.8), 
     0 15px 35px rgba(0, 0, 0, 0.03);
+  border-radius: 24px;
+  overflow: hidden;
+  isolation: isolate;
 }
 
 /* 3D Ice Reflection overlay on Front card */
-.showcase-card-front::after {
+.showcase-card-front-content::after {
   content: '';
   position: absolute;
   top: 0;
@@ -176,7 +188,6 @@
   transform: scale(1.04);
 }
 
-/* Watercolor Deco (Bottom Left) */
 .showcase-watercolor-deco {
   position: absolute;
   bottom: 12px;
@@ -192,7 +203,6 @@
   transform-origin: bottom left;
   transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
   will-change: transform, opacity;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.05));
 }
 
 .showcase-item:hover .showcase-watercolor-deco {

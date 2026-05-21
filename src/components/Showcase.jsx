@@ -238,22 +238,24 @@ const Showcase = () => {
         <div className="showcase-card-inner">
           {/* Card Front (Bottle + Watercolor Deco) */}
           <div className="showcase-card-front">
-            {/* Base Perfume Bottle Body */}
-            <img 
-              src={bottleShot} 
-              alt="LuneFleur Perfume Bottle" 
-              className="showcase-bottle-img"
-              style={{ filter: item.colorFilter }}
-              loading="lazy"
-            />
-            {/* Watercolor Birth Flower Deco (Bottom Left) */}
-            <img 
-              src={item.src} 
-              alt={item.alt} 
-              className="showcase-watercolor-deco"
-              loading="lazy"
-            />
-            <div className="card-month-badge">{item.month}월</div>
+            <div className="showcase-card-front-content">
+              {/* Base Perfume Bottle Body */}
+              <img 
+                src={bottleShot} 
+                alt="LuneFleur Perfume Bottle" 
+                className="showcase-bottle-img"
+                style={{ filter: item.colorFilter }}
+                loading="lazy"
+              />
+              {/* Watercolor Birth Flower Deco (Bottom Left) */}
+              <img 
+                src={item.src} 
+                alt={item.alt} 
+                className="showcase-watercolor-deco"
+                loading="lazy"
+              />
+              <div className="card-month-badge">{item.month}월</div>
+            </div>
           </div>
           
           {/* Card Back */}

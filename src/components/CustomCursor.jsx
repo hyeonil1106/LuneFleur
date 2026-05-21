@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import '../styles/components/CustomCursor.css';
+import bottleShot from '../assets/images/bottle_shot.png';
 
 const CustomCursor = () => {
   const cursorRef = useRef(null);
@@ -86,7 +87,7 @@ const CustomCursor = () => {
         <div className="cursor-bottle-wrapper">
           {/* Miniature Perfume Bottle */}
           <img 
-            src="/assets/images/bottle_shot.png" 
+            src={bottleShot} 
             className="cursor-bottle-bg" 
             alt="cursor bottle"
             style={{ filter: hoveredColorFilter }}

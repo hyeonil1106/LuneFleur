@@ -47,16 +47,6 @@ const Navbar = () => {
 
         {/* Right Actions */}
         <div className="navbar-actions">
-          <button className="icon-btn" aria-label="Cart">
-            <ShoppingBag size={20} />
-          </button>
-          <button 
-            onClick={() => scrollToSection('.interactive-intro')} 
-            className="navbar-cta-btn"
-          >
-            시작하기
-          </button>
-          
           {/* Mobile Menu Toggle */}
           <button 
             className="mobile-toggle" 

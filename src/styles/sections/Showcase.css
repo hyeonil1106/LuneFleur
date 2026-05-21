@@ -253,7 +253,7 @@
 
 .card-back-month {
   font-size: 0.85rem;
-  color: #ff8e9e;
+  color: #B22222; /* 다크 레드 */
   font-weight: 700;
   letter-spacing: 0.06em;
   margin-bottom: 0.7rem;
@@ -277,7 +277,7 @@
 
 .card-back-name-en {
   font-size: 0.9rem;
-  color: #777;
+  color: #333333;
   font-weight: 400;
   letter-spacing: 0.02em;
 }
@@ -298,16 +298,16 @@
 }
 
 .card-back-meaning .meaning-label {
-  font-size: 0.75rem;
-  color: #9c9c9c;
-  font-weight: 600;
+  font-size: 0.9rem;
+  color: #222222;
+  font-weight: 400;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .card-back-meaning .meaning-text {
   font-size: clamp(0.95rem, 1.2vw, 1.1rem);
-  color: #444;
+  color: #111111;
   line-height: 1.6;
   font-weight: 500;
   word-break: keep-all;

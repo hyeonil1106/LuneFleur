@@ -41,16 +41,33 @@
   transform: translate(0);
 }
 
+.intro-subtitle {
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  color: var(--color-text-main);
+  margin-bottom: 2.5rem;
+}
+
 .intro-heading {
   font-size: clamp(2.5rem, 4vw, 3.5rem);
   color: var(--color-text-main);
   margin-bottom: 1.5rem;
 }
 
+.month-desc {
+  font-size: 1.1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
 .intro-desc {
   font-size: 1.125rem;
-  color: rgba(74, 88, 70, 0.7);
+  color: var(--color-text-main);
   line-height: 1.8;
+}
+
+.date-input::placeholder {
+  color: var(--color-text-main);
+  font-weight: 400;
 }
 
 .form-group {
@@ -186,10 +203,16 @@
   letter-spacing: -0.02em;
 }
 
+.hint-text {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  margin-top: 1rem;
+}
+
 .reset-btn {
   background: none;
   border: none;
-  color: rgba(74, 88, 70, 0.5);
+  color: var(--color-text-main);
   cursor: pointer;
   padding: 4px;
   display: flex;

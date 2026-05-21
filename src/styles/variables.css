@@ -2,8 +2,9 @@
 :root {
   /* Color Palette - 새벽의 정원 */
   --color-bg-primary: #F9F8F6; /* 소프트 아이보리 */
-  --color-text-main: #4A5846;  /* 세이지 그린 */
-  --color-accent: #C29B74;     /* 뮤티드 골드 */
+  --color-text-main: #2C352A;  /* 아주 다크한 세이지 그린 (대비 7:1 이상) */
+  --color-text-secondary: #4A5846; /* 보조 텍스트 색상 (대비 4.5:1 이상) */
+  --color-accent: #8C6B45;     /* 다크 브라운 골드 (대비 개선) */
   
   --color-white: #FFFFFF;
   --color-black: #1A1A1A;

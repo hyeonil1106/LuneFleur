@@ -106,6 +106,7 @@ const InteractiveIntro = () => {
                       value={selectedMonth} 
                       onChange={(e) => setSelectedMonth(e.target.value)}
                       required
+                      aria-label="태어난 월 선택"
                     >
                       <option value="" disabled hidden>월 (Month)</option>
                       {Array.from({ length: 12 }, (_, i) => (
@@ -117,6 +118,7 @@ const InteractiveIntro = () => {
                       value={selectedDay} 
                       onChange={(e) => setSelectedDay(e.target.value)}
                       required
+                      aria-label="태어난 일 선택"
                     >
                       <option value="" disabled hidden>일 (Day)</option>
                       {Array.from({ length: 31 }, (_, i) => (
@@ -126,7 +128,7 @@ const InteractiveIntro = () => {
                   </div>
                 </div>
                 
-                <button type="submit" className="submit-btn">
+                <button type="submit" className="submit-btn" aria-label="나의 탄생화 조회하기">
                   나만의 탄생화 발견하기
                 </button>
               </form>

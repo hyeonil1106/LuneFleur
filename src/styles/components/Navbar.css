@@ -58,7 +58,7 @@
 .menu-link {
   background: none;
   border: none;
-  font-family: 'Noto Serif KR', serif; /* 사이트 헤딩과 조화로운 한국어/영어 최적 서체 */
+  font-family: var(--font-sans); /* 사이트 폰트와 통일감 있는 고딕 서체 */
   font-size: 1.15rem; /* 크기 확대 */
   font-weight: 500;
   color: var(--color-text-main);

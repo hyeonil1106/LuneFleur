@@ -1,0 +1,411 @@
+/* src/styles/sections/Efficacy.css */
+.efficacy {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 8rem 0;
+  /* Base background */
+  background-color: var(--color-bg-primary);
+}
+
+/* Fluid Morphing Background */
+.morph-bg {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 50% 50%, rgba(74, 88, 70, 0.08), transparent 60%),
+              radial-gradient(circle at 80% 20%, rgba(194, 155, 116, 0.08), transparent 50%);
+  z-index: 0;
+  opacity: 0.5;
+  transition: transform 0.1s ease-out;
+  pointer-events: none;
+}
+
+.efficacy-container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 6rem;
+}
+
+/* Alternate Layout: Text Left, Image Right */
+.efficacy-content {
+  flex: 1;
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.efficacy-visual {
+  flex: 1;
+  position: relative;
+  opacity: 0;
+  transform: translateX(30px);
+  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: 0.2s;
+}
+
+.efficacy.is-visible .efficacy-content,
+.efficacy.is-visible .efficacy-visual {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.efficacy-title {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  color: var(--color-text-main);
+  margin-bottom: 2rem;
+  line-height: 1.3;
+}
+
+.efficacy-desc {
+  font-size: 1.125rem;
+  color: rgba(74, 88, 70, 0.8);
+  line-height: 1.8;
+  margin-bottom: 3rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  border-top: 1px solid rgba(74, 88, 70, 0.1);
+  padding-top: 2rem;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-value {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  color: var(--color-accent);
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.circular-gallery-container {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1600px; /* Strong 3D spatial perspective */
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.circular-gallery-container.is-dragging {
+  cursor: grabbing;
+}
+
+.gallery-card-slot {
+  position: absolute;
+  width: 340px;
+  height: 453px; /* 3/4 aspect ratio */
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease, filter 0.8s ease;
+  will-change: transform, opacity, filter;
+  cursor: pointer;
+  border-radius: 24px;
+}
+
+/* 3D Bend Placement for Left, Center, Right cards */
+.gallery-card-slot.is-prev {
+  transform: translateX(-160px) translateZ(-200px) rotateY(30deg) scale(0.85);
+  opacity: 0.45;
+  filter: blur(4px);
+  z-index: 1;
+  pointer-events: auto;
+}
+
+.gallery-card-slot.is-next {
+  transform: translateX(160px) translateZ(-200px) rotateY(-30deg) scale(0.85);
+  opacity: 0.45;
+  filter: blur(4px);
+  z-index: 1;
+  pointer-events: auto;
+}
+
+/* Hidden Orbit Cards (Deep 3D background positions) */
+.gallery-card-slot.is-far-prev {
+  transform: translateX(-320px) translateZ(-400px) rotateY(45deg) scale(0.65);
+  opacity: 0;
+  filter: blur(8px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.gallery-card-slot.is-far-next {
+  transform: translateX(320px) translateZ(-400px) rotateY(-45deg) scale(0.65);
+  opacity: 0;
+  filter: blur(8px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.gallery-card-slot.is-active {
+  transform: translateX(0) translateZ(80px) rotateY(0deg) scale(1.05);
+  opacity: 1;
+  filter: blur(0);
+  z-index: 3;
+  pointer-events: auto;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+}
+
+.gallery-card-slot.is-active.is-fading {
+  opacity: 0.2;
+  transform: translateX(0) translateZ(40px) scale(0.98);
+}
+
+/* Card inner container rotating in 3D */
+.visual-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-style: preserve-3d;
+  border-radius: 24px;
+}
+
+.gallery-card-slot.is-active.is-flipped .visual-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Card sides standard properties */
+.visual-card-front,
+.visual-card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* Hide other side when flipped */
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+/* Card Front Styles */
+.visual-card-front {
+  background-color: var(--color-white);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 
+    inset 0 0 25px rgba(255, 255, 255, 0.65), 
+    inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+}
+
+.visual-card-front::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(0, 0, 0, 0.01) 60%,
+    rgba(255, 255, 255, 0.15) 100%
+  );
+  pointer-events: none;
+  z-index: 3;
+}
+
+.visual-bottle-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  -webkit-user-drag: none;
+  mix-blend-mode: multiply; /* Key out white background */
+  filter: contrast(0.98) brightness(0.99);
+}
+
+.visual-watercolor-deco {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  width: 35%;
+  height: auto;
+  object-fit: contain;
+  z-index: 2;
+  pointer-events: none;
+  -webkit-user-drag: none;
+  mix-blend-mode: multiply;
+  opacity: 0.9;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.05));
+}
+
+.visual-month-badge {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: 0.05em;
+  z-index: 4;
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* Card Back Styles (Ingredients Chart) */
+.visual-card-back {
+  background-color: var(--color-white);
+  transform: rotateY(180deg);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 
+    inset 0 0 35px rgba(255, 255, 255, 0.95), 
+    0 15px 35px rgba(0, 0, 0, 0.03);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.2rem;
+  box-sizing: border-box;
+}
+
+.visual-chart-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+}
+
+.visual-chart-title {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--color-text-main);
+  margin: 0 0 0.8rem 0;
+  letter-spacing: -0.01em;
+}
+
+.visual-chart-divider {
+  width: 30px;
+  height: 2px;
+  background-color: var(--color-accent);
+  margin-bottom: 1.5rem;
+}
+
+.chart-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  margin-bottom: auto;
+}
+
+.chart-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.chart-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.825rem;
+  font-weight: 600;
+}
+
+.chart-item-name {
+  color: var(--color-text-main);
+}
+
+.chart-item-percent {
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+.chart-bar-bg {
+  width: 100%;
+  height: 5px;
+  background-color: rgba(74, 88, 70, 0.07);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.chart-bar-fill {
+  height: 100%;
+  border-radius: 10px;
+  width: 0%;
+  transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: width;
+}
+
+.visual-chart-caption {
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: rgba(74, 88, 70, 0.5);
+  margin: 1.5rem 0 0 0;
+}
+
+@media (max-width: 992px) {
+  .efficacy-container {
+    flex-direction: column;
+    gap: 4rem;
+  }
+  .circular-gallery-container {
+    height: 540px;
+  }
+  .gallery-card-slot {
+    width: 300px;
+    height: 400px;
+  }
+  .gallery-card-slot.is-prev {
+    transform: translateX(-110px) translateZ(-150px) rotateY(25deg) scale(0.85);
+  }
+  .gallery-card-slot.is-next {
+    transform: translateX(110px) translateZ(-150px) rotateY(-25deg) scale(0.85);
+  }
+  .gallery-card-slot.is-far-prev {
+    transform: translateX(-220px) translateZ(-300px) rotateY(40deg) scale(0.65);
+  }
+  .gallery-card-slot.is-far-next {
+    transform: translateX(220px) translateZ(-300px) rotateY(-40deg) scale(0.65);
+  }
+  .gallery-card-slot.is-active {
+    transform: translateX(0) translateZ(50px) rotateY(0deg) scale(1.03);
+  }
+}
+
+@media (max-width: 480px) {
+  .circular-gallery-container {
+    height: 480px;
+  }
+  .gallery-card-slot {
+    width: 270px;
+    height: 360px;
+  }
+  .gallery-card-slot.is-prev,
+  .gallery-card-slot.is-next {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .gallery-card-slot.is-active {
+    transform: translateX(0) translateZ(0) scale(1);
+  }
+}

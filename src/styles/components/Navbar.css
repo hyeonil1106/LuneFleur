@@ -1,0 +1,226 @@
+/* src/styles/components/Navbar.css */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 85px;
+  z-index: var(--z-index-nav);
+  display: flex;
+  align-items: center;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  background-color: #ffffff; /* 순수 불투명 흰색 고정 */
+  border-bottom: 1px solid rgba(74, 88, 70, 0.08);
+}
+
+/* Scroll State Styling */
+.navbar.is-scrolled {
+  height: 72px;
+  background-color: #ffffff; /* 순수 불투명 흰색 고정 */
+  border-bottom: 1px solid rgba(74, 88, 70, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+}
+
+.navbar-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo */
+.navbar-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.85rem; /* 크기 확대 */
+  font-weight: 600;
+  letter-spacing: 0.18em; /* 자간 조정 */
+  color: var(--color-text-main);
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  user-select: none;
+}
+
+.navbar-logo:hover {
+  opacity: 0.8;
+}
+
+/* Menu Links */
+.navbar-menu {
+  display: flex;
+  gap: 2.8rem;
+  align-items: center;
+}
+
+.menu-link {
+  background: none;
+  border: none;
+  font-family: 'Noto Serif KR', serif; /* 사이트 헤딩과 조화로운 한국어/영어 최적 서체 */
+  font-size: 1.15rem; /* 크기 확대 */
+  font-weight: 500;
+  color: var(--color-text-main);
+  cursor: pointer;
+  padding: 0.5rem 0;
+  position: relative;
+  letter-spacing: 0.02em;
+  transition: color 0.3s ease;
+}
+
+.menu-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-accent);
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.menu-link:hover {
+  color: var(--color-accent);
+}
+
+.menu-link:hover::after {
+  width: 100%;
+}
+
+/* Actions */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  color: var(--color-text-main);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.icon-btn:hover {
+  color: var(--color-accent);
+  background-color: rgba(194, 155, 116, 0.08);
+  transform: translateY(-1px);
+}
+
+.navbar-cta-btn {
+  padding: 0.65rem 1.5rem;
+  background-color: var(--color-text-main);
+  color: var(--color-white);
+  border: 1px solid var(--color-text-main);
+  border-radius: 30px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navbar-cta-btn:hover {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(194, 155, 116, 0.2);
+}
+
+/* Mobile Toggle */
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--color-text-main);
+  cursor: pointer;
+  padding: 0.25rem;
+  z-index: 100;
+}
+
+/* Mobile Drawer */
+.mobile-drawer {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--color-bg-primary);
+  z-index: calc(var(--z-index-nav) - 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: right 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 2rem;
+}
+
+.mobile-drawer.is-open {
+  right: 0;
+}
+
+.mobile-drawer-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+.mobile-menu-link {
+  background: none;
+  border: none;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: var(--color-text-main);
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: color 0.3s ease;
+}
+
+.mobile-menu-link:hover {
+  color: var(--color-accent);
+}
+
+.mobile-cta-btn {
+  margin-top: 1rem;
+  width: 80%;
+  max-width: 300px;
+  padding: 1rem;
+  background-color: var(--color-text-main);
+  color: var(--color-white);
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mobile-cta-btn:hover {
+  background-color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar-menu,
+  .navbar-cta-btn {
+    display: none;
+  }
+  
+  .mobile-toggle {
+    display: block;
+  }
+  
+  .navbar-actions {
+    gap: 0.5rem;
+  }
+}

@@ -1,0 +1,414 @@
+/* src/styles/sections/InteractiveIntro.css */
+.interactive-intro {
+  background-color: var(--color-bg-primary);
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.intro-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4rem;
+}
+
+.intro-text-col {
+  flex: 1;
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 1s ease-out, transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.intro-form-col {
+  flex: 1;
+  max-width: 500px;
+  background-color: var(--color-white);
+  padding: 3rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(74, 88, 70, 0.05);
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s ease-out, transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: 0.3s; /* Stagger effect */
+}
+
+.interactive-intro.is-visible .intro-text-col,
+.interactive-intro.is-visible .intro-form-col {
+  opacity: 1;
+  transform: translate(0);
+}
+
+.intro-heading {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  color: var(--color-text-main);
+  margin-bottom: 1.5rem;
+}
+
+.intro-desc {
+  font-size: 1.125rem;
+  color: rgba(74, 88, 70, 0.7);
+  line-height: 1.8;
+}
+
+.form-group {
+  margin-bottom: 2rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--color-text-main);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.select-wrapper {
+  display: flex;
+  gap: 1rem;
+}
+
+.custom-select {
+  flex: 1;
+  padding: 1rem;
+  border: 1px solid rgba(74, 88, 70, 0.2);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--color-text-main);
+  background-color: transparent;
+  outline: none;
+  transition: var(--transition-fast);
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234A5846' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+}
+
+.custom-select:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(194, 155, 116, 0.2);
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 1.25rem;
+  background-color: var(--color-text-main);
+  color: var(--color-white);
+  border-radius: 8px;
+  font-size: 1.125rem;
+  font-weight: 500;
+  transition: var(--transition-smooth);
+}
+
+.submit-btn:hover {
+  background-color: var(--color-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(194, 155, 116, 0.3);
+}
+
+/* Fluid Blur Overlay Layer */
+.blur-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at center, rgba(194, 155, 116, 0.1), transparent 70%);
+  backdrop-filter: blur(0px);
+  opacity: 0;
+  pointer-events: none;
+  transition: backdrop-filter 1.5s ease, opacity 1.5s ease;
+  z-index: 10;
+}
+
+.interactive-intro.is-blurring .blur-overlay {
+  opacity: 1;
+  backdrop-filter: blur(20px);
+}
+
+@media (max-width: 768px) {
+  .intro-container {
+    flex-direction: column;
+    gap: 3rem;
+  }
+  
+  .intro-form-col {
+    width: 100%;
+    padding: 2rem;
+  }
+}
+
+/* --- Birth Flower Result Card Styles --- */
+.form-card-wrapper {
+  transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1), transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  width: 100%;
+}
+
+.form-card-wrapper.is-animating {
+  opacity: 0;
+  transform: translateY(10px) scale(0.98);
+}
+
+.intro-result-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  animation: fadeInResult 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes fadeInResult {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(74, 88, 70, 0.1);
+  padding-bottom: 0.75rem;
+}
+
+.result-date {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text-main);
+  letter-spacing: -0.02em;
+}
+
+.reset-btn {
+  background: none;
+  border: none;
+  color: rgba(74, 88, 70, 0.5);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--transition-fast), transform var(--transition-smooth);
+}
+
+.reset-btn:hover {
+  color: var(--color-accent);
+  transform: rotate(180deg);
+}
+
+/* Elegant Flower Frame */
+.flower-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(74, 88, 70, 0.08);
+  background-color: rgba(247, 246, 243, 0.5);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.01), 0 4px 12px rgba(0, 0, 0, 0.02);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flower-frame::before {
+  display: none;
+}
+
+.flower-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  position: relative;
+  z-index: 2;
+  transition: opacity 0.8s ease-in-out, transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.flower-img.is-loaded {
+  opacity: 1;
+}
+
+.flower-img.is-isolated {
+  object-fit: contain;
+  padding: 1.5rem;
+  background-color: transparent; /* 뒷배경 회전 꽃이 보이도록 투명화 */
+}
+
+/* Rotating background watercolor decoration */
+.flower-bg-rotate {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 130%;
+  height: 130%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.12; /* 은은한 수채화 무드 배경 */
+  filter: blur(6px); /* 몽환적인 스며듦 연출 */
+  z-index: 1;
+  pointer-events: none;
+  animation: rotateFlower 80s linear infinite;
+  will-change: transform;
+}
+
+@keyframes rotateFlower {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.flower-img:not(.is-isolated) {
+  /* 중앙의 꽃만 부각시키고 외곽의 나무 배경을 부드럽게 투명화하여 배경을 최소화하는 CSS 마스크 */
+  mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 72%);
+  -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 72%);
+  object-fit: cover;
+}
+
+/* 로딩 플레이스홀더 및 수채화 스피너 */
+.flower-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background-color: var(--color-bg-primary);
+  border-radius: 12px;
+  z-index: 2;
+}
+
+.watercolor-spinner {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--color-accent) 0%, transparent 70%);
+  filter: blur(1.5px);
+  position: relative;
+  animation: watercolorPulse 1.8s ease-in-out infinite alternate, rotateSpinner 4s linear infinite;
+}
+
+.watercolor-spinner::before {
+  content: '';
+  position: absolute;
+  top: -4px; left: -4px; right: -4px; bottom: -4px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: var(--color-accent);
+  border-bottom-color: rgba(194, 155, 116, 0.1);
+  animation: rotateSpinner 1.2s linear infinite;
+}
+
+@keyframes watercolorPulse {
+  0% {
+    transform: scale(0.92);
+    opacity: 0.5;
+    filter: blur(2px);
+  }
+  100% {
+    transform: scale(1.08);
+    opacity: 0.85;
+    filter: blur(1px);
+  }
+}
+
+@keyframes rotateSpinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.placeholder-text {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 0.9rem;
+  color: var(--color-text-main);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  opacity: 0.8;
+  animation: pulseText 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes pulseText {
+  0% { opacity: 0.5; }
+  100% { opacity: 0.9; }
+}
+
+.intro-result-card:hover .flower-img.is-loaded {
+  transform: scale(1.04);
+}
+
+/* Flower Info Typography */
+.flower-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.flower-name {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.flower-name-ko {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+  letter-spacing: -0.03em;
+}
+
+.flower-name-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--color-accent);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.flower-meaning-badge {
+  background-color: rgba(194, 155, 116, 0.06);
+  border-left: 2px solid var(--color-accent);
+  padding: 0.75rem 1rem;
+  border-radius: 0 8px 8px 0;
+}
+
+.meaning-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.25rem;
+}
+
+.meaning-text {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--color-text-main);
+  margin: 0;
+}
+

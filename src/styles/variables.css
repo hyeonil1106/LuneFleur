@@ -1,0 +1,29 @@
+/* src/styles/variables.css */
+:root {
+  /* Color Palette - 새벽의 정원 */
+  --color-bg-primary: #F9F8F6; /* 소프트 아이보리 */
+  --color-text-main: #4A5846;  /* 세이지 그린 */
+  --color-accent: #C29B74;     /* 뮤티드 골드 */
+  
+  --color-white: #FFFFFF;
+  --color-black: #1A1A1A;
+  
+  /* Typography */
+  --font-serif: 'Cormorant Garamond', 'Noto Serif KR', serif;
+  --font-sans: 'Inter', 'Noto Sans KR', sans-serif;
+  
+  /* Layout */
+  --max-width: 1200px;
+  --section-padding: 100px 20px;
+  --section-padding-mobile: 60px 20px;
+  
+  /* Transitions */
+  --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: all 0.3s ease;
+  
+  /* Z-Index */
+  --z-index-back: -1;
+  --z-index-base: 1;
+  --z-index-nav: 10;
+  --z-index-cursor: 9999;
+}

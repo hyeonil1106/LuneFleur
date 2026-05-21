@@ -39,7 +39,7 @@ const Navbar = () => {
         <nav className="navbar-menu">
           <button onClick={() => scrollToSection('.hero')} className="menu-link">스토리</button>
           <button onClick={() => scrollToSection('.interactive-intro')} className="menu-link">탄생화</button>
-          <button onClick={() => scrollToSection('.showcase')} className="menu-link">쇼케이스</button>
+          <button onClick={() => scrollToSection('.showcase')} className="menu-link">제품목록</button>
           <button onClick={() => scrollToSection('.efficacy')} className="menu-link">성분</button>
           <button onClick={() => scrollToSection('.social-proof')} className="menu-link">리뷰</button>
           <button onClick={() => scrollToSection('.epilogue-cta')} className="menu-link">선물하기</button>
@@ -63,8 +63,8 @@ const Navbar = () => {
         <nav className="mobile-drawer-menu">
           <button onClick={() => scrollToSection('.hero')} className="mobile-menu-link">스토리</button>
           <button onClick={() => scrollToSection('.interactive-intro')} className="mobile-menu-link">탄생화</button>
-          <button onClick={() => scrollToSection('.showcase')} className="mobile-menu-link">쇼케이스</button>
-          <button onClick={() => scrollToSection('.efficacy')} className="mobile-menu-link">효능</button>
+          <button onClick={() => scrollToSection('.showcase')} className="mobile-menu-link">제품목록</button>
+          <button onClick={() => scrollToSection('.efficacy')} className="mobile-menu-link">성분</button>
           <button onClick={() => scrollToSection('.social-proof')} className="mobile-menu-link">리뷰</button>
           <button onClick={() => scrollToSection('.epilogue-cta')} className="mobile-menu-link">선물하기</button>
           <button

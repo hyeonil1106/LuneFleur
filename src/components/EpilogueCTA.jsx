@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import '../styles/sections/EpilogueCTA.css';
+import giftBoxImg from '../assets/images/gift_box_new.jpg';
 
 const EpilogueCTA = () => {
   const sectionRef = useRef(null);
@@ -30,19 +31,19 @@ const EpilogueCTA = () => {
     <section className="epilogue-cta" ref={sectionRef}>
       <div className="epilogue-content">
         <div className="epilogue-img-wrapper">
-          <img 
-            src="/assets/images/gift_box_new.jpg" 
-            alt="프리미엄 기프트 패키징" 
+          <img
+            src={giftBoxImg}
+            alt="프리미엄 기프트 패키징"
             className="epilogue-img"
             loading="lazy"
           />
         </div>
-        
+
         <h2 className="epilogue-title">
           가장 특별한 날에 태어난 당신에게,<br />
           탄생화의 문장을 선물하세요.
         </h2>
-        
+
         <button className="final-cta-btn">
           선물하기
         </button>

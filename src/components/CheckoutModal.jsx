@@ -21,9 +21,18 @@ const CheckoutModal = ({ isOpen, onClose }) => {
           <div className="form-group">
             <select id="product" required defaultValue="">
               <option value="" disabled hidden>상품 옵션을 선택해주세요</option>
-              <option value="rose">탄생화 문장 패키지 - 장미 (5월)</option>
-              <option value="lily">탄생화 문장 패키지 - 백합 (6월)</option>
-              <option value="sunflower">탄생화 문장 패키지 - 해바라기 (8월)</option>
+              <option value="f1">탄생화 문장 패키지 - 수선화 (1월)</option>
+              <option value="f2">탄생화 문장 패키지 - 제비꽃 (2월)</option>
+              <option value="f3">탄생화 문장 패키지 - 데이지 (3월)</option>
+              <option value="f4">탄생화 문장 패키지 - 스위트피 (4월)</option>
+              <option value="f5">탄생화 문장 패키지 - 은방울꽃 (5월)</option>
+              <option value="f6">탄생화 문장 패키지 - 장미 (6월)</option>
+              <option value="f7">탄생화 문장 패키지 - 델피늄 (7월)</option>
+              <option value="f8">탄생화 문장 패키지 - 글라디올러스 (8월)</option>
+              <option value="f9">탄생화 문장 패키지 - 아스터 (9월)</option>
+              <option value="f10">탄생화 문장 패키지 - 금잔화 (10월)</option>
+              <option value="f11">탄생화 문장 패키지 - 국화 (11월)</option>
+              <option value="f12">탄생화 문장 패키지 - 포인세티아 (12월)</option>
               <option value="custom">커스텀 탄생화 문장 패키지</option>
             </select>
           </div>

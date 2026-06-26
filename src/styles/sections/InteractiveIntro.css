@@ -43,56 +43,87 @@
   transform: translate(0);
 }
 
-/* Decorative background flowers */
-.intro-bg-flower {
+/* Decorative wallpaper background flowers */
+.intro-bg-wallpaper {
   position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 3rem;
+  padding: 3rem;
   pointer-events: none;
   z-index: 1;
   opacity: 0;
+  transition: opacity 2s ease;
+}
+
+.intro-wallpaper-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.intro-wallpaper-flower {
+  width: clamp(100px, 15vw, 220px);
+  height: clamp(100px, 15vw, 220px);
+  object-fit: contain;
+  opacity: 0;
   mix-blend-mode: multiply;
-  transition: opacity 2s ease, transform 2.2s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform, opacity;
+  filter: grayscale(10%) contrast(95%);
+  transition: transform 2.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 2s ease;
 }
 
-.intro-bg-flower.flower-left {
-  left: -8%;
-  bottom: -15%;
-  width: clamp(250px, 30vw, 420px);
-  transform: translate(-50px, 50px) rotate(-20deg);
-}
-
-.intro-bg-flower.flower-right {
-  right: -8%;
-  top: -15%;
-  width: clamp(280px, 35vw, 480px);
-  transform: translate(50px, -50px) rotate(20deg);
-}
+/* 무작위적인 초기 상태 설정 (회전, 살짝 줄어듦) */
+.intro-wallpaper-item:nth-child(3n) .intro-wallpaper-flower { transform: scale(0.7) rotate(-15deg); }
+.intro-wallpaper-item:nth-child(3n+1) .intro-wallpaper-flower { transform: scale(0.8) rotate(12deg); }
+.intro-wallpaper-item:nth-child(3n+2) .intro-wallpaper-flower { transform: scale(0.75) rotate(-8deg); }
 
 /* When the section is visible */
-.interactive-intro.is-visible .intro-bg-flower {
-  opacity: 0.08; /* Subtle watermark feel that does not impact text readability */
+.interactive-intro.is-visible .intro-bg-wallpaper {
+  opacity: 1;
 }
 
-.interactive-intro.is-visible .intro-bg-flower.flower-left {
-  transform: translate(0, 0) rotate(0deg);
+.interactive-intro.is-visible .intro-wallpaper-flower {
+  opacity: 0.05; /* 은은한 벽지 패턴 opacity */
 }
 
-.interactive-intro.is-visible .intro-bg-flower.flower-right {
-  transform: translate(0, 0) rotate(0deg);
+/* visible 일 때 살짝 커지며 회전하는 자연스러운 모션 */
+.interactive-intro.is-visible .intro-wallpaper-item:nth-child(3n) .intro-wallpaper-flower {
+  transform: scale(0.9) rotate(-5deg);
+}
+.interactive-intro.is-visible .intro-wallpaper-item:nth-child(3n+1) .intro-wallpaper-flower {
+  transform: scale(1) rotate(5deg);
+}
+.interactive-intro.is-visible .intro-wallpaper-item:nth-child(3n+2) .intro-wallpaper-flower {
+  transform: scale(0.95) rotate(0deg);
 }
 
-/* Responsive configurations */
+/* Responsive configurations for wallpaper grid */
 @media (max-width: 992px) {
-  .intro-bg-flower.flower-left {
-    left: -12%;
-    bottom: -10%;
-    width: clamp(200px, 25vw, 300px);
+  .intro-bg-wallpaper {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 2rem;
+    padding: 2rem;
   }
-  
-  .intro-bg-flower.flower-right {
-    right: -12%;
-    top: -10%;
-    width: clamp(220px, 30vw, 350px);
+}
+
+@media (max-width: 576px) {
+  .intro-bg-wallpaper {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+  .intro-wallpaper-flower {
+    width: clamp(80px, 20vw, 130px);
+    height: clamp(80px, 20vw, 130px);
   }
 }
 

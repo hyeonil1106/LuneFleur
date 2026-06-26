@@ -15,6 +15,12 @@ import flower10 from '../assets/images/flowers/flower_10.png';
 import flower11 from '../assets/images/flowers/flower_11.png';
 import flower12 from '../assets/images/flowers/flower_12.png';
 
+const allFlowers = [
+  flower01, flower02, flower03, flower04,
+  flower05, flower06, flower07, flower08,
+  flower09, flower10, flower11, flower12
+];
+
 const birthFlowers = {
   1: { nameKo: '수선화', nameEn: 'Daffodil', image: flower01, meaning: '자기사랑, 자존심, 고결' },
   2: { nameKo: '제비꽃', nameEn: 'Violet', image: flower02, meaning: '겸손, 진실한 사랑' },
@@ -63,10 +69,10 @@ const InteractiveIntro = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!selectedMonth || !selectedDay) return;
-    
+
     setIsAnimating(true);
     setImageLoading(true);
-    
+
     // 카드가 부드럽게 사라졌다가 교체되어 나타나도록 하는 애니메이션 딜레이 (300ms)
     setTimeout(() => {
       const flower = birthFlowers[selectedMonth];
@@ -92,23 +98,28 @@ const InteractiveIntro = () => {
   };
 
   return (
-    <section 
-      className="section interactive-intro" 
+    <section
+      className="section interactive-intro"
       ref={sectionRef}
     >
       <div className="blur-overlay"></div>
-      
-      {/* Decorative background flowers */}
-      <img src={flower05} alt="" className="intro-bg-flower flower-left" />
-      <img src={flower07} alt="" className="intro-bg-flower flower-right" />
+
+      {/* Decorative wallpaper background flowers */}
+      <div className="intro-bg-wallpaper">
+        {allFlowers.map((flower, idx) => (
+          <div key={`bg-flower-${idx}`} className="intro-wallpaper-item">
+            <img src={flower} alt="" className="intro-wallpaper-flower" />
+          </div>
+        ))}
+      </div>
 
       <div className="container intro-container">
-        
+
         <div className="intro-text-col">
-          <h2 className="intro-heading">당신의 계절이 시작된 날,<br/>어떤 꽃이 피어났나요?</h2>
+          <h2 className="intro-heading">당신의 계절이 시작된 날,<br />어떤 꽃이 피어났나요?</h2>
           <p className="intro-desc">
-            가장 개인적인 기억을 향기로 기록합니다.<br/>
-            당신이 태어난 달과 날짜에 깃든 탄생화의 문장과, <br/>
+            가장 개인적인 기억을 향기로 기록합니다.<br />
+            당신이 태어난 달과 날짜에 깃든 탄생화의 문장과, <br />
             그날의 공기를 닮은 특별한 조향을 확인해보세요.
           </p>
         </div>
@@ -118,35 +129,35 @@ const InteractiveIntro = () => {
             {!showResult ? (
               <form onSubmit={handleSubmit} className="intro-form">
                 <div className="form-group">
-                  <label className="form-label">Date of Birth</label>
+                  <label className="form-label">Birthday</label>
                   <div className="select-wrapper">
-                    <select 
-                      className="custom-select" 
-                      value={selectedMonth} 
+                    <select
+                      className="custom-select"
+                      value={selectedMonth}
                       onChange={(e) => setSelectedMonth(e.target.value)}
                       required
                       aria-label="태어난 월 선택"
                     >
                       <option value="" disabled hidden>월 (Month)</option>
                       {Array.from({ length: 12 }, (_, i) => (
-                        <option key={`month-${i+1}`} value={i + 1}>{i + 1}월</option>
+                        <option key={`month-${i + 1}`} value={i + 1}>{i + 1}월</option>
                       ))}
                     </select>
-                    <select 
-                      className="custom-select" 
-                      value={selectedDay} 
+                    <select
+                      className="custom-select"
+                      value={selectedDay}
                       onChange={(e) => setSelectedDay(e.target.value)}
                       required
                       aria-label="태어난 일 선택"
                     >
                       <option value="" disabled hidden>일 (Day)</option>
                       {Array.from({ length: 31 }, (_, i) => (
-                        <option key={`day-${i+1}`} value={i + 1}>{i + 1}일</option>
+                        <option key={`day-${i + 1}`} value={i + 1}>{i + 1}일</option>
                       ))}
                     </select>
                   </div>
                 </div>
-                
+
                 <button type="submit" className="submit-btn" aria-label="나의 탄생화 조회하기">
                   나만의 탄생화 발견하기
                 </button>
@@ -157,11 +168,11 @@ const InteractiveIntro = () => {
                   <span className="result-date">{birthFlower.month}월 {birthFlower.day}일의 탄생화</span>
                   <button className="reset-btn" onClick={handleReset} aria-label="다시 조회하기">
                     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+                      <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67" />
                     </svg>
                   </button>
                 </div>
-                
+
                 <div className="flower-frame">
                   {imageLoading && (
                     <div className="flower-placeholder">
@@ -169,23 +180,23 @@ const InteractiveIntro = () => {
                       <span className="placeholder-text">탄생화 준비중 입니다.</span>
                     </div>
                   )}
-                  
+
                   {/* Rotating background watercolor decoration */}
                   {!imageLoading && (
-                    <div 
+                    <div
                       className="flower-bg-rotate"
                       style={{ backgroundImage: `url(${birthFlower.image})` }}
                     ></div>
                   )}
-                  
-                  <img 
-                    src={birthFlower.image} 
-                    alt={birthFlower.nameKo} 
-                    className={`flower-img ${birthFlower.image.includes('isolated') ? 'is-isolated' : ''} ${!imageLoading ? 'is-loaded' : ''}`} 
+
+                  <img
+                    src={birthFlower.image}
+                    alt={birthFlower.nameKo}
+                    className={`flower-img ${birthFlower.image.includes('isolated') ? 'is-isolated' : ''} ${!imageLoading ? 'is-loaded' : ''}`}
                     onLoad={() => setImageLoading(false)}
                   />
                 </div>
-                
+
                 <div className="flower-info">
                   <h3 className="flower-name">
                     <span className="flower-name-ko">{birthFlower.nameKo}</span>

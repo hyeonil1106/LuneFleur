@@ -246,7 +246,7 @@ const Efficacy = () => {
       <div className="morph-bg" ref={bgRef}></div>
       
       <div className="container efficacy-container">
-        <div className="efficacy-content">
+        <div className="efficacy-content reveal reveal-left">
           <h2 className="efficacy-title">코 끝에 머무는 은은함,<br/>아침의 설렘이 퇴근길의 잔향으로</h2>
           <p className="efficacy-desc">
             일반적인 알코올 베이스가 아닌, 워터와 오일의 이중(Biphase) 구조가
@@ -255,18 +255,18 @@ const Efficacy = () => {
           </p>
           
           <div className="stats-grid">
-            <div className="stat-item">
+            <div className="stat-item reveal reveal-up delay-200">
               <span className="stat-value">8+ hrs</span>
               <span className="stat-label">Long-lasting Aura</span>
             </div>
-            <div className="stat-item">
+            <div className="stat-item reveal reveal-up delay-400">
               <span className="stat-value">0%</span>
               <span className="stat-label">Alcohol-free</span>
             </div>
           </div>
         </div>
         
-        <div className="efficacy-visual">
+        <div className="efficacy-visual reveal reveal-right">
           <div 
             className={`circular-gallery-container ${activeDragClass}`}
             onMouseDown={handleDragStart}

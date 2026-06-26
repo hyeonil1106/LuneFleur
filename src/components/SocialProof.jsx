@@ -123,7 +123,7 @@ const SocialProof = () => {
   return (
     <section className="section social-proof" ref={sectionRef}>
       <div className="container">
-        <div className="social-header">
+        <div className="social-header reveal reveal-up">
           <h2 className="social-title">실제 사용자들의 리뷰를 확인해 보세요</h2>
         </div>
 
@@ -135,8 +135,8 @@ const SocialProof = () => {
           onMouseUp={handleMouseUp}
           onMouseMove={handleMouseMove}
         >
-          {reviews.map((review) => (
-            <div className="review-card" key={review.id}>
+          {reviews.map((review, index) => (
+            <div className={`review-card reveal reveal-up delay-${((index % 3) * 200) + 100}`} key={review.id}>
               <div className="review-img-wrapper">
                 {/* Base Perfume Bottle */}
                 <img

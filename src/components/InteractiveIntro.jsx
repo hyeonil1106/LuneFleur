@@ -97,6 +97,11 @@ const InteractiveIntro = () => {
       ref={sectionRef}
     >
       <div className="blur-overlay"></div>
+      
+      {/* Decorative background flowers */}
+      <img src={flower05} alt="" className="intro-bg-flower flower-left" />
+      <img src={flower07} alt="" className="intro-bg-flower flower-right" />
+
       <div className="container intro-container">
         
         <div className="intro-text-col">

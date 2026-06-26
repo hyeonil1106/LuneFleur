@@ -13,6 +13,8 @@
   justify-content: space-between;
   align-items: center;
   gap: 4rem;
+  position: relative;
+  z-index: 2;
 }
 
 .intro-text-col {
@@ -39,6 +41,59 @@
 .interactive-intro.is-visible .intro-form-col {
   opacity: 1;
   transform: translate(0);
+}
+
+/* Decorative background flowers */
+.intro-bg-flower {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  mix-blend-mode: multiply;
+  transition: opacity 2s ease, transform 2.2s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.intro-bg-flower.flower-left {
+  left: -8%;
+  bottom: -15%;
+  width: clamp(250px, 30vw, 420px);
+  transform: translate(-50px, 50px) rotate(-20deg);
+}
+
+.intro-bg-flower.flower-right {
+  right: -8%;
+  top: -15%;
+  width: clamp(280px, 35vw, 480px);
+  transform: translate(50px, -50px) rotate(20deg);
+}
+
+/* When the section is visible */
+.interactive-intro.is-visible .intro-bg-flower {
+  opacity: 0.08; /* Subtle watermark feel that does not impact text readability */
+}
+
+.interactive-intro.is-visible .intro-bg-flower.flower-left {
+  transform: translate(0, 0) rotate(0deg);
+}
+
+.interactive-intro.is-visible .intro-bg-flower.flower-right {
+  transform: translate(0, 0) rotate(0deg);
+}
+
+/* Responsive configurations */
+@media (max-width: 992px) {
+  .intro-bg-flower.flower-left {
+    left: -12%;
+    bottom: -10%;
+    width: clamp(200px, 25vw, 300px);
+  }
+  
+  .intro-bg-flower.flower-right {
+    right: -12%;
+    top: -10%;
+    width: clamp(220px, 30vw, 350px);
+  }
 }
 
 .intro-subtitle {

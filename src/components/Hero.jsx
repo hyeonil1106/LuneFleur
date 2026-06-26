@@ -27,6 +27,9 @@ const Hero = () => {
       
       // Parallax and fade effect for text
       if (scrollY < window.innerHeight) {
+        // Remove transform transition dynamically during scroll to prevent lag
+        textRef.current.style.transition = 'opacity 0.3s ease-out';
+        
         const opacity = 1 - (scrollY / window.innerHeight) * 1.5;
         const translateY = scrollY * 0.4;
         

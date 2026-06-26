@@ -32,7 +32,7 @@ const EpilogueCTA = () => {
   return (
     <section className="epilogue-cta" ref={sectionRef}>
       <div className="epilogue-content">
-        <div className="epilogue-img-wrapper">
+        <div className="epilogue-img-wrapper reveal reveal-scale">
           <img
             src={giftBoxImg}
             alt="프리미엄 기프트 패키징"
@@ -41,12 +41,12 @@ const EpilogueCTA = () => {
           />
         </div>
 
-        <h2 className="epilogue-title">
+        <h2 className="epilogue-title reveal reveal-up delay-200">
           가장 특별한 날에 태어난 당신에게,<br />
           탄생화의 문장을 선물하세요.
         </h2>
 
-        <button className="final-cta-btn" onClick={() => setIsModalOpen(true)}>
+        <button className="final-cta-btn reveal reveal-up delay-400" onClick={() => setIsModalOpen(true)}>
           선물하기
         </button>
       </div>

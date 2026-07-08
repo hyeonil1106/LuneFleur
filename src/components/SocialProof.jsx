@@ -120,6 +120,27 @@ const SocialProof = () => {
     gridRef.current.scrollLeft = scrollLeft.current - walk;
   };
 
+  const handleTouchStart = (e) => {
+    isDown.current = true;
+    if (gridRef.current) {
+      gridRef.current.classList.add('is-dragging');
+      startX.current = e.touches[0].pageX - gridRef.current.offsetLeft;
+      scrollLeft.current = gridRef.current.scrollLeft;
+    }
+  };
+
+  const handleTouchEnd = () => {
+    isDown.current = false;
+    if (gridRef.current) gridRef.current.classList.remove('is-dragging');
+  };
+
+  const handleTouchMove = (e) => {
+    if (!isDown.current || !gridRef.current) return;
+    const x = e.touches[0].pageX - gridRef.current.offsetLeft;
+    const walk = (x - startX.current) * 1.5;
+    gridRef.current.scrollLeft = scrollLeft.current - walk;
+  };
+
   return (
     <section className="section social-proof" ref={sectionRef}>
       <div className="container">
@@ -134,6 +155,9 @@ const SocialProof = () => {
           onMouseLeave={handleMouseLeave}
           onMouseUp={handleMouseUp}
           onMouseMove={handleMouseMove}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          onTouchMove={handleTouchMove}
         >
           {reviews.map((review, index) => (
             <div className={`review-card reveal reveal-up delay-${((index % 3) * 200) + 100}`} key={review.id}>

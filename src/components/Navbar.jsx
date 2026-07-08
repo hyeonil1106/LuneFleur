@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/components/Navbar.css';
-import { Menu, X, ShoppingBag } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);

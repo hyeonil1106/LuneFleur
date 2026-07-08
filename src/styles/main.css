@@ -8,38 +8,38 @@
 }
 
 html {
-  font-size: 16.5px;
+  font-size: 16px; /* 16.5px에서 16px로 소폭 축소하여 세련미 확보 */
   scroll-behavior: smooth;
   overflow-x: hidden;
 }
 
 @media (max-width: 1200px) {
   html {
-    font-size: 15.5px;
+    font-size: 15px;
   }
 }
 
 @media (max-width: 992px) {
   html {
-    font-size: 15px;
+    font-size: 14.5px;
   }
 }
 
 @media (max-width: 768px) {
   html {
-    font-size: 14px;
+    font-size: 13.5px;
   }
 }
 
 @media (max-width: 480px) {
   html {
-    font-size: 13px;
+    font-size: 12.5px;
   }
 }
 
 @media (max-width: 360px) {
   html {
-    font-size: 12px;
+    font-size: 11.5px;
   }
 }
 
@@ -47,7 +47,7 @@ body {
   background-color: var(--color-bg-primary);
   color: var(--color-text-main);
   font-family: var(--font-sans);
-  line-height: 1.6;
+  line-height: 1.65; /* 본문 가독성을 위해 line-height를 1.6에서 1.65로 향상 */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -56,13 +56,13 @@ body {
 h1, h3, h4, h5, h6 {
   font-family: var(--font-serif);
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.35; /* 제목 줄 겹침 방지를 위해 1.2에서 1.35로 상향 */
 }
 
 h2 {
   font-family: var(--font-serif);
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.4; /* 제목 줄 겹침 방지를 위해 1.2에서 1.4로 상향 */
 }
 
 a {

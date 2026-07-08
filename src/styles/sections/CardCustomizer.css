@@ -1,0 +1,750 @@
+/* src/styles/sections/CardCustomizer.css */
+
+.card-customizer {
+  position: relative;
+  background-color: var(--color-bg-primary);
+  padding: 120px 0;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.customizer-overlay-blur {
+  position: absolute;
+  top: 10%;
+  right: -5%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(140, 107, 69, 0.08) 0%, rgba(249, 248, 246, 0) 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.customizer-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 60px auto;
+}
+
+.customizer-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+  margin-bottom: 20px;
+  letter-spacing: -0.03em;
+}
+
+.customizer-subtitle {
+  font-size: 1.05rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+/* Layout - 수직(세로) 배치 구조 */
+.customizer-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  width: 100%;
+}
+
+/* Preview Column (상단 배치) */
+.preview-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  position: static; /* sticky 해제 */
+}
+
+/* Preview Card Design */
+.preview-card-frame {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  height: 540px;
+  border-radius: 24px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 25px 50px -12px rgba(44, 53, 42, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.preview-card-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.05) 100%);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+/* 종이 질감 최상위 레이어로 격상하여 꽃/글자와 융합 */
+.card-texture {
+  position: absolute;
+  inset: 0;
+  opacity: 0.07; /* 인쇄 엽서 같은 질감 체감을 위해 농도 미세 상향 */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 10; /* 최상위로 올려 꽃 이미지와 편지 텍스트 위로 질감이 지나가도록 설계 */
+}
+
+.card-top-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.card-date-badge {
+  font-family: var(--font-sans);
+  font-weight: 500;
+}
+
+.card-brand-logo {
+  font-family: var(--font-serif);
+  font-weight: 600;
+}
+
+/* Illustration center frame */
+.card-illustration-frame {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.watercolor-circle {
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  /* 순백색 번짐이 아닌, 배경색과 부드럽게 융합되도록 투명도 하향 조율 */
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.45) 45%, rgba(255, 255, 255, 0) 70%);
+  border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+  filter: blur(6px);
+  z-index: 1;
+  mix-blend-mode: soft-light; /* 카드 배경 그라데이션 고유의 색감에 물감이 번지는 효과 */
+  animation: watercolorMorph 12s ease-in-out infinite alternate;
+}
+
+/* 깊이감 있는 수채화 번짐을 위한 추가 레이어 */
+.watercolor-circle::after {
+  content: '';
+  position: absolute;
+  inset: -15px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 65%);
+  border-radius: 40% 60% 30% 70% / 60% 40% 60% 40%;
+  filter: blur(12px);
+  mix-blend-mode: soft-light;
+  animation: watercolorMorph 8s ease-in-out infinite alternate-reverse;
+}
+
+.theme-dark .watercolor-circle {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 45%, rgba(255, 255, 255, 0) 75%);
+  mix-blend-mode: normal;
+}
+
+.theme-dark .watercolor-circle::after {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 70%);
+  mix-blend-mode: normal;
+}
+
+/* 수채화 물감이 스며나가는 듯한 모핑 애니메이션 */
+@keyframes watercolorMorph {
+  0% {
+    border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    border-radius: 45% 55% 35% 65% / 60% 35% 65% 40%;
+    transform: rotate(90deg) scale(1.04);
+  }
+  100% {
+    border-radius: 30% 70% 40% 60% / 50% 45% 55% 50%;
+    transform: rotate(180deg) scale(0.96);
+  }
+}
+
+.card-flower-image {
+  position: relative;
+  max-height: 100%;
+  object-fit: contain;
+  z-index: 2;
+  mix-blend-mode: multiply; /* 흰색 단색 배경 제거 */
+  opacity: 0.93; /* 미세한 불투명도를 주어 카드 배경 색감과 유기적으로 융합 */
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.theme-dark .card-flower-image {
+  mix-blend-mode: normal; /* 어두운 카드 배경에서는 투명 이미지를 렌더링하므로 multiply 블렌딩 해제 */
+  opacity: 0.88; /* 붕 떠 보이는 스티커 질감을 해결하기 위해 어두운 배경색이 미세 투과되도록 조율 */
+  filter: brightness(1.05) contrast(1.02); /* 어두운 카드 위에서 번짐과 어울리도록 조절 */
+}
+
+.preview-card-frame:hover .card-flower-image {
+  transform: scale(1.05) translateY(-5px);
+}
+
+/* Text Area */
+.card-text-area {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: center;
+  padding: 0 10px;
+  z-index: 2;
+}
+
+.card-to-field {
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  opacity: 0.75;
+  font-weight: 500;
+}
+
+.card-message-field {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  white-space: pre-line;
+  word-break: keep-all;
+  letter-spacing: -0.01em;
+  min-height: 85px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-flower-meaning-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin: 5px 0;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  transition: var(--transition-fast);
+}
+
+.theme-dark .card-flower-meaning-zone {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-meaning-title {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.6;
+}
+
+.card-meaning-text {
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: -0.02em;
+}
+
+.card-message-field.custom-one-liner {
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.5;
+  min-height: 48px;
+  opacity: 0.9;
+  letter-spacing: -0.01em;
+  word-break: keep-all;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-from-field {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  letter-spacing: 0.08em;
+}
+
+.card-bottom-meaning {
+  text-align: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding-top: 15px;
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+.theme-dark .card-bottom-meaning {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.meaning-tag {
+  display: inline-block;
+  font-family: var(--font-sans);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.65rem;
+  margin-bottom: 4px;
+}
+
+.meaning-desc {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+}
+
+.preview-tip {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  margin-top: 20px;
+  text-align: center;
+  opacity: 0.8;
+}
+
+/* Right Side: Control Column (하단 배치) */
+.control-column {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.control-card {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 28px;
+  padding: 40px;
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.05);
+
+  /* 내부 설정들을 컴팩트하게 배치할 수 있는 그리드 레이아웃 적용 */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px 40px;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .control-card {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    padding: 30px 20px;
+  }
+}
+
+.control-section {
+  /* 그리드 구조에 맞추어 마진과 보더 해제 */
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+/* 메시지 커스터마이징 폼(Step 03)은 세로 길이가 길어 그리드 2행을 할당 */
+.control-section:nth-of-type(3) {
+  grid-row: span 2;
+}
+
+@media (max-width: 768px) {
+  .control-section:nth-of-type(3) {
+    grid-row: auto;
+  }
+}
+
+.section-step {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  font-family: var(--font-sans);
+}
+
+.section-step span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 22px;
+  height: 22px;
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  font-size: 0.7rem;
+  border-radius: 50%;
+  margin-right: 8px;
+  font-weight: 700;
+}
+
+/* Inputs & Selects */
+.select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.customizer-select {
+  width: 100%;
+  padding: 14px 20px;
+  background-color: var(--color-white);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  font-size: 0.95rem;
+  color: var(--color-text-main);
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: var(--transition-fast);
+}
+
+.customizer-select:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(140, 107, 69, 0.1);
+}
+
+.select-wrapper::after {
+  content: '';
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid var(--color-text-secondary);
+  pointer-events: none;
+}
+
+/* Background Presets Grid (5개 테마 한 줄 배치) */
+.bg-preset-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+@media (max-width: 576px) {
+  .bg-preset-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bg-preset-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.preset-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+  position: relative;
+}
+
+.preset-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+}
+
+.preset-btn.active {
+  border-color: var(--color-accent);
+  transform: scale(1.02);
+}
+
+.preset-name {
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
+  color: #1a1a1a;
+  mix-blend-mode: difference;
+  filter: invert(1);
+  white-space: nowrap; /* 5열 배치 시 글씨 꺾임 방지 */
+}
+
+/* Input Fields */
+.input-group {
+  margin-bottom: 16px;
+}
+
+.input-group:last-child {
+  margin-bottom: 0;
+}
+
+.input-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  margin-bottom: 6px;
+  font-family: var(--font-sans);
+}
+
+.customizer-input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: var(--color-white);
+  color: var(--color-text-main);
+  outline: none;
+  font-size: 0.9rem;
+  font-family: var(--font-sans);
+  transition: var(--transition-fast);
+}
+
+.customizer-input:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(140, 107, 69, 0.1);
+}
+
+.customizer-textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: var(--color-white);
+  color: var(--color-text-main);
+  outline: none;
+  font-size: 0.9rem;
+  font-family: var(--font-sans);
+  resize: none;
+  line-height: 1.5;
+  transition: var(--transition-fast);
+}
+
+.customizer-textarea:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(140, 107, 69, 0.1);
+}
+
+.char-count {
+  display: block;
+  text-align: right;
+  font-size: 0.75rem;
+  color: rgba(0, 0, 0, 0.4);
+  margin-top: 4px;
+}
+
+/* Font Selector Grid (가로 2열 그리드 맞춤형 2열 배치) */
+.font-preset-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.font-btn {
+  padding: 14px;
+  background: var(--color-white);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  font-size: 0.85rem;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.font-btn:hover {
+  background: rgba(140, 107, 69, 0.05);
+  border-color: var(--color-accent);
+}
+
+.font-btn.active {
+  background: var(--color-accent);
+  color: var(--color-white);
+  border-color: var(--color-accent);
+  box-shadow: 0 4px 12px rgba(140, 107, 69, 0.2);
+}
+
+/* Save Action Buttons (그리드 2열 전체 차지) */
+.action-section {
+  grid-column: span 2;
+  margin-top: 15px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .action-section {
+    grid-column: auto;
+    margin-top: 5px;
+  }
+}
+
+.save-card-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 16px;
+  background: var(--color-text-main);
+  color: var(--color-bg-primary);
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  box-shadow: 0 10px 25px rgba(44, 53, 42, 0.15);
+}
+
+.save-card-btn:hover {
+  background: var(--color-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(140, 107, 69, 0.25);
+}
+
+.save-card-btn:active {
+  transform: translateY(0);
+}
+
+/* APPROVED Stamp Overlay */
+.stamp-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-15deg) scale(2);
+  border: 4px solid #c62828;
+  color: #c62828;
+  font-size: 2rem;
+  font-weight: 900;
+  font-family: var(--font-sans);
+  padding: 8px 18px;
+  border-radius: 8px;
+  letter-spacing: 0.15em;
+  opacity: 0;
+  z-index: 99;
+  pointer-events: none;
+  background-color: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Animations & Effects */
+.saving-effect {
+  animation: shakeAndGlow 0.5s ease-in-out;
+}
+
+.saving-effect .stamp-overlay {
+  opacity: 0.85;
+  transform: translate(-50%, -50%) rotate(-12deg) scale(1);
+}
+
+@keyframes shakeAndGlow {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(0.96) rotate(-2deg); }
+  50% { transform: scale(1.03) rotate(2deg); box-shadow: 0 0 30px rgba(140, 107, 69, 0.3); }
+  75% { transform: scale(0.99) rotate(-1deg); }
+}
+
+/* Save Success Modal */
+.save-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(44, 53, 42, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  animation: fadeIn 0.3s ease;
+}
+
+.save-modal {
+  background: var(--color-bg-primary);
+  width: 90%;
+  max-width: 460px;
+  border-radius: 24px;
+  padding: 35px;
+  text-align: center;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  animation: scaleUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.modal-icon {
+  width: 64px;
+  height: 64px;
+  background-color: rgba(76, 175, 80, 0.1);
+  color: #4CAF50;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 20px auto;
+}
+
+.modal-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--color-text-main);
+}
+
+.modal-desc {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.modal-card-summary {
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 28px;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.summary-flower-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  opacity: 0.8;
+  margin-bottom: 6px;
+}
+
+.summary-text {
+  font-size: 1.1rem;
+  font-style: italic;
+  opacity: 0.95;
+}
+
+.modal-close-btn {
+  width: 100%;
+  padding: 14px;
+  background-color: var(--color-text-main);
+  color: var(--color-bg-primary);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.modal-close-btn:hover {
+  background-color: var(--color-accent);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}

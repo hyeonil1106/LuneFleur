@@ -36,11 +36,10 @@ const birthFlowers = {
   12: { nameKo: '포인세티아', nameEn: 'Poinsettia', image: flower12, meaning: '축복, 뜨거운 마음' },
 };
 
-const InteractiveIntro = () => {
+const InteractiveIntro = ({ sharedBirthFlower, setSharedBirthFlower }) => {
   const sectionRef = useRef(null);
   const [selectedMonth, setSelectedMonth] = useState('');
   const [selectedDay, setSelectedDay] = useState('');
-  const [birthFlower, setBirthFlower] = useState(null);
   const [showResult, setShowResult] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const [imageLoading, setImageLoading] = useState(true);
@@ -76,7 +75,7 @@ const InteractiveIntro = () => {
     // 카드가 부드럽게 사라졌다가 교체되어 나타나도록 하는 애니메이션 딜레이 (300ms)
     setTimeout(() => {
       const flower = birthFlowers[selectedMonth];
-      setBirthFlower({
+      setSharedBirthFlower({
         ...flower,
         month: selectedMonth,
         day: selectedDay
@@ -90,7 +89,7 @@ const InteractiveIntro = () => {
     setIsAnimating(true);
     setTimeout(() => {
       setShowResult(false);
-      setBirthFlower(null);
+      setSharedBirthFlower(null);
       setSelectedMonth('');
       setSelectedDay('');
       setIsAnimating(false);
@@ -165,7 +164,7 @@ const InteractiveIntro = () => {
             ) : (
               <div className="intro-result-card">
                 <div className="result-header">
-                  <span className="result-date">{birthFlower.month}월 {birthFlower.day}일의 탄생화</span>
+                  <span className="result-date">{sharedBirthFlower.month}월 {sharedBirthFlower.day}일의 탄생화</span>
                   <button className="reset-btn" onClick={handleReset} aria-label="다시 조회하기">
                     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67" />
@@ -185,26 +184,26 @@ const InteractiveIntro = () => {
                   {!imageLoading && (
                     <div
                       className="flower-bg-rotate"
-                      style={{ backgroundImage: `url(${birthFlower.image})` }}
+                      style={{ backgroundImage: `url(${sharedBirthFlower.image})` }}
                     ></div>
                   )}
 
                   <img
-                    src={birthFlower.image}
-                    alt={birthFlower.nameKo}
-                    className={`flower-img ${birthFlower.image.includes('isolated') ? 'is-isolated' : ''} ${!imageLoading ? 'is-loaded' : ''}`}
+                    src={sharedBirthFlower.image}
+                    alt={sharedBirthFlower.nameKo}
+                    className={`flower-img ${sharedBirthFlower.image.includes('isolated') ? 'is-isolated' : ''} ${!imageLoading ? 'is-loaded' : ''}`}
                     onLoad={() => setImageLoading(false)}
                   />
                 </div>
 
                 <div className="flower-info">
                   <h3 className="flower-name">
-                    <span className="flower-name-ko">{birthFlower.nameKo}</span>
-                    <span className="flower-name-en">{birthFlower.nameEn}</span>
+                    <span className="flower-name-ko">{sharedBirthFlower.nameKo}</span>
+                    <span className="flower-name-en">{sharedBirthFlower.nameEn}</span>
                   </h3>
                   <div className="flower-meaning-badge">
                     <span className="meaning-label">꽃말</span>
-                    <p className="meaning-text">“ {birthFlower.meaning} ”</p>
+                    <p className="meaning-text">“ {sharedBirthFlower.meaning} ”</p>
                   </div>
                 </div>
               </div>

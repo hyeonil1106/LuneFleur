@@ -1,14 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import CustomCursor from './components/CustomCursor';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import InteractiveIntro from './components/InteractiveIntro';
+import CardCustomizer from './components/CardCustomizer';
 import Showcase from './components/Showcase';
 import Efficacy from './components/Efficacy';
 import SocialProof from './components/SocialProof';
 import EpilogueCTA from './components/EpilogueCTA';
 
 function App() {
+  const [sharedBirthFlower, setSharedBirthFlower] = useState(null);
+
   useEffect(() => {
     const revealElements = document.querySelectorAll('.reveal');
     
@@ -42,7 +45,13 @@ function App() {
       <Navbar />
       <main>
         <Hero />
-        <InteractiveIntro />
+        <InteractiveIntro 
+          sharedBirthFlower={sharedBirthFlower}
+          setSharedBirthFlower={setSharedBirthFlower}
+        />
+        <CardCustomizer 
+          sharedBirthFlower={sharedBirthFlower}
+        />
         <Showcase />
         <Efficacy />
         <SocialProof />
